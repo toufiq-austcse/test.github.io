@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdn.jwplayer.com/libraries/uRZ0y6Un.js"></script>
+        <title>Document</title>
+</head>
+<body>
+        <div id="myElement">
+
+        </div>
+</body>
+</html>
+<script type="text/JavaScript">
+        jwplayer("myElement").setup({
+  "playlist": [
+    {
+      "sources": [
+        {
+        //  "default": true,
+          "type": "hls",
+          "file": "https://d3qytqrwtuc3ag.cloudfront.net/out/v1/42245822992846ef99deb86033be05d7/index.m3u8",
+        //  "label": "3"
+        }
+      ]
+    }
+  ],
+  "controls": true,
+  "height": 360,
+  "width": 640
+});
+jwplayer().on('meta',data=>{
+ console.log('data ',data);
+  if(data.metadata?.messageData){
+    let msgData= data.metadata.messageData
+    console.log('msgdata ',msgData);
+    var text = new TextDecoder().decode(msgData);
+    console.log('id3 metadata ',text);
+    alert("quiz ashce......")
+  }
+ 
+})
+
+//jwplayer().on('time',data=>console.log('time ',data))
+    </script>
